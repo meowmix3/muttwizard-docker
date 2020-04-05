@@ -24,14 +24,17 @@ Configure the gpg/pass info
 docker exec -it muttwizard /usr/bin/gpg --full-gen-key
 # Enter the GPG email you used to configure pass
 docker exec -it /usr/bin/pass init <yourGPGemail>
-# configure muttwizard
+# Add an account
 docker exec -it /usr/local/bin/mw add
+# Restart the container
+docker restart muttwizard
 ```
 
 To add more emails run
 `docker exec -it muttwizard /usr/local/bin/mw add` 
 
-The included `mw cron` does not work because cronie is not installed, to auto sync emails add something like this to your host crontab (if you GPG key does not have a passphrase):
+The included `mw cron` does not work because cronie is not installed, to auto sync emails add something like this to your host crontab (if you GPG key does not have a passphrase)
+
 `*/15 * * * * * docker exec -t muttwizard /usr/bin/mbsync -a`
 
 Also includes a `update.sh` to rebuild the container.
