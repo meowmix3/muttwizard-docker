@@ -16,11 +16,15 @@ RUN pacman -S --noconfirm \
 	make \
 	tzdata \
 	vi \
+	python-pip \
 	notmuch
 # clone & make
 RUN git clone https://github.com/LukeSmithxyz/mutt-wizard.git && \
 	cd mutt-wizard && \
 	make install
+RUN pip3 install --no-cache-dir \
+        vdirsyncer \
+        khard
 # add user
 RUN useradd -ms /bin/bash user
 USER user
