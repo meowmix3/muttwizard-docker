@@ -39,6 +39,15 @@ The included `mw cron` does not work because cronie is not installed, to auto sy
 
 Also includes a `update.sh` to rebuild the container.
 
+If you want to use the included [vdirsyncer](http://vdirsyncer.pimutils.org/en/stable/) & [khard](https://github.com/scheibler/khard/) to sync and use your contacts with neomutt, place your properly configured files into `data/.config/`.
+
+Once those are set up & synced`, edit `data/.config/mutt/mutt-wizard.muttrc` and add the following to the bottom
+
+```
+set query_command = "khard email --parsable '%s'"
+macro pager,index a "<pipe-message>khard add-email<return>" "add the sender address to khard"
+```
+
 ### Please!
 Feel free to message me, open issues, make a pull request, or suggest any changes!
 
