@@ -1,13 +1,12 @@
-FROM archlinux
+FROM debian:buster-slim
 # set locale
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 ENV EDITOR nvim
-RUN locale-gen
 # install dependencies
-RUN pacman -Sy --noconfirm
-RUN pacman -S --noconfirm \
+RUN apt update 
+RUN apt install -y \
 	git \
 	pass \
 	neomutt \
@@ -17,8 +16,9 @@ RUN pacman -S --noconfirm \
 	make \
 	tzdata \
 	neovim \
-	python-pip \
+	python3-pip \
 	notmuch
+RUN locale-gen
 # clone & make
 RUN git clone https://github.com/LukeSmithxyz/mutt-wizard.git && \
 	cd mutt-wizard && \

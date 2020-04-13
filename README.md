@@ -1,6 +1,8 @@
 This is a Dockerfile for mutt-wizard, to simplify the already simple installation and have it in a super fun happy container.
 
-Runs on an Arch Linux base, because that's what Luke uses (or used) for awhile, but I might change it to Alpine in the future.
+<strike>Runs on an Arch Linux base,</strike> because that's what Luke uses (or used) for awhile, but I might change it to Alpine in the future.
+
+Running on an `debian:buster-slim` base for now, the Arch one started breaking with updates.
 
 ### Building/Running
 
