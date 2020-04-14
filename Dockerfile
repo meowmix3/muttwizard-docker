@@ -1,8 +1,7 @@
 FROM debian:buster-slim
-# set locale
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
+# set locale + editor
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
 ENV EDITOR nvim
 # install dependencies
 RUN apt update 
@@ -17,8 +16,8 @@ RUN apt install -y \
 	tzdata \
 	neovim \
 	python3-pip \
+	urlview \
 	notmuch
-RUN locale-gen
 # clone & make
 RUN git clone https://github.com/LukeSmithxyz/mutt-wizard.git && \
 	cd mutt-wizard && \
