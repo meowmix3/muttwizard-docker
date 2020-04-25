@@ -18,6 +18,10 @@ RUN apt install -y \
 	python3-pip \
 	urlview \
 	notmuch
+# clean
+RUN apt clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /root/.cache
 # clone & make
 RUN git clone https://github.com/LukeSmithxyz/mutt-wizard.git && \
 	cd mutt-wizard && \
@@ -28,5 +32,4 @@ RUN pip3 install --no-cache-dir \
 # add user
 RUN useradd -ms /bin/bash user
 USER user
-WORKDIR /home/user
 ENTRYPOINT /usr/bin/neomutt
